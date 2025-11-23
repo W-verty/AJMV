@@ -2,8 +2,10 @@ namespace Types {
     export const valtype = ['string', 'number', 'boolean', 'object', 'array'];
 }
 
-function inPlainObject(obj: any): boolean {
-    return typeof obj === 'object' && obj !== null && !Array.isArray(obj);
+function inPlainObject(value: unknown) : boolean {
+    if (value === null || typeof value !== 'object') return false;
+    const proto = Object.getPrototypeOf(value);
+    return proto === Object.prototype || proto === null;
 }
 
 export class AnotherJSONModuleValidator {
