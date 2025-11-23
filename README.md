@@ -1,85 +1,86 @@
-# AJMV - Another JSON Module Validator
+ # AJMV - Another JSON Module Validator
 
-Valide objetos JavaScript/JSON contra módulos de definição de tipos de forma simples e flexível.
+ Validate JavaScript/JSON objects against compact, schema-like module definitions.
 
-## Descrição
+ ## Description
 
-AJMV (Another JSON Module Validator) é uma biblioteca TypeScript/JavaScript para validação de objetos com base em módulos de definição semelhantes a JSON Schema, mas com sintaxe simplificada. Permite definir tipos, propriedades obrigatórias, arrays e restrições de itens, facilitando a validação de dados em aplicações Node.js ou front-end.
+ AJMV (Another JSON Module Validator) is a lightweight TypeScript/JavaScript library for validating objects using simplified module definitions similar to JSON Schema. It supports declaring types, required properties, nested objects, arrays, and item constraints—useful for both Node.js and browser projects.
 
-## Instalação
+ ## Installation
 
-Clone este repositório e instale as dependências:
+ Clone the repository and install dependencies:
 
-```bash
-npm install
-```
+ ```bash
+ npm install
+ ```
 
-## Build (Distribuição)
+ ## Build (Distribution)
 
-Para gerar os arquivos de distribuição minificados para múltiplas plataformas (CommonJS, ESM, UMD):
+ To generate minified distribution files for multiple targets (CommonJS, ESM, UMD):
 
-```bash
-npm run build
-```
+ ```bash
+ npm run build
+ ```
 
-Os arquivos serão gerados na pasta `dist/`.
+ Build artifacts are written to the `dist/` folder.
 
-## Uso Básico
+ ## Basic Usage
 
-```typescript
-import { AnotherJSONModuleValidator } from "./ajmv.class.js"
+ ```typescript
+ import { AnotherJSONModuleValidator } from './ajmv.class.js';
 
-const ajmv = new AnotherJSONModuleValidator();
+ const ajmv = new AnotherJSONModuleValidator();
 
-const JsonModule:JSONModuleObject = {
-    type: 'object',
-    properties: {
-        name: { type: 'string' },
-        year: { type: 'number' },
-        tags: {
-            type: 'object',
-            properties: {
-                staff: {
-                    type: 'array',
-                    items: { type: 'string' }
-                }
-            }
-        },
-        arr: {
-            type: 'array',
-            items: { type: 'number' }
-        }
-    },
-    required: ['name', 'tags', 'arr'],
-    requiredTypes: true
-}
+ const ModuleObject: JSONModuleObject = {
+   type: 'object',
+   properties: {
+     name: { type: 'string' },
+     year: { type: 'number' },
+     tags: {
+       type: 'object',
+       properties: {
+         staff: {
+           type: 'array',
+           items: { type: 'string' }
+         }
+       }
+     },
+     arr: {
+       type: 'array',
+       items: { type: 'number' }
+     }
+   },
+   required: ['name', 'tags', 'arr'],
+   requiredTypes: true
+ };
 
-const baseValid = {
-    name: 'verty',
-    tags: {
-        staff: ['Owner', 'Manager', 'Developer']
-    },
-    arr: [1, 2, 3, 4, 5]
-}
+ const baseValid = {
+   name: 'Verty',
+   tags: {
+     staff: ['Owner', 'Manager', 'Developer']
+   },
+   arr: [1, 2, 3, 4, 5]
+ };
 
-if(!ajmv.validator(JsonModule, baseValid)) {
-    console.log('Errors:', ajmv.getErrors().join('\n'));
-    process.exit();
-}
+ if (!ajmv.validator(ModuleObject, baseValid)) {
+   console.log('Errors:', ajmv.getErrors().join('\n'));
+   process.exit(1);
+ }
 
-console.log('ALL_OK');
-console.log('Warnings:', ajmv.getWarnings().join('\n'));
-```
+ console.log('ALL_OK');
+ console.log('Warnings:', ajmv.getWarnings().join('\n'));
+ ```
 
-## API
+ ## API
 
-- `validator(module, base)`: Valida o objeto `base` conforme o módulo de definição.
-- `getErrors()`: Retorna um array de mensagens de erro da última validação.
+ - `validator(module, base)`: Validate the `base` object against the provided module definition.
+ - `getErrors()`: Returns an array of error messages from the last validation.
+ - `getWarnings()`: Returns an array of warnings from the last validation.
 
-## Tipos de Módulo
+ ## Module Types
 
-Veja exemplos e tipos em `src/globa.d.ts`.
+ See `src/globa.d.ts` for type definitions and examples.
 
-## Licença
+ ## License
 
-[MIT](https://github.com/W-verty/AJMV/tree/main?tab=MIT-1-ov-file)
+ [MIT](https://github.com/W-verty/AJMV/tree/main?tab=MIT-1-ov-file)
