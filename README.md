@@ -84,3 +84,7 @@
  ## License
 
  [MIT](https://github.com/W-verty/AJMV/tree/main?tab=MIT-1-ov-file)
+
+ ### Next Update
+
+ - A function for parsing and generating a module.
