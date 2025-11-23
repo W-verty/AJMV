@@ -82,4 +82,4 @@ Veja exemplos e tipos em `src/globa.d.ts`.
 
 ## Licença
 
-ISC
+[MIT](https://github.com/W-verty/AJMV/tree/main?tab=MIT-1-ov-file)
