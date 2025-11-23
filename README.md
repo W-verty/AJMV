@@ -81,7 +81,7 @@
 
  See `src/globa.d.ts` for type definitions and examples.
 
- ### Next Update
+ ## Next Update
 
  - A function for parsing and generating a module.
 
