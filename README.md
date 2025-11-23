@@ -62,7 +62,7 @@ const baseValid = {
     arr: [1, 2, 3, 4, 5]
 }
 
-if(!ajmv.validateModule(JsonModule, baseValid)) {
+if(!ajmv.validator(JsonModule, baseValid)) {
     console.log('Errors:', ajmv.getErrors().join('\n'));
     process.exit();
 }
@@ -73,7 +73,7 @@ console.log('Warnings:', ajmv.getWarnings().join('\n'));
 
 ## API
 
-- `validateModule(module, base)`: Valida o objeto `base` conforme o módulo de definição.
+- `validator(module, base)`: Valida o objeto `base` conforme o módulo de definição.
 - `getErrors()`: Retorna um array de mensagens de erro da última validação.
 
 ## Tipos de Módulo
